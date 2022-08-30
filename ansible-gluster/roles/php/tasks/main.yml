@@ -1,0 +1,26 @@
+---
+# tasks file for php
+- name: Install php
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - php
+    - php-common
+    - php-curl
+    - php-gd
+    - php-mbstring
+    - php-soap
+    - php-xml
+    - php-xmlrpc
+    - php-zip
+    - php-fpm
+    - php-mysql
+    - php-cli
+    - php-ldap
+
+- name: Enable php-fpm
+  systemd:
+    name: php7.4-fpm
+    enabled: yes
+

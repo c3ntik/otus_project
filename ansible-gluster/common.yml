@@ -1,0 +1,13 @@
+---
+- name: common
+  hosts: gw nginx
+  become: true
+  roles:
+    - role: common
+- name: nginx
+  hosts: nginx
+  become: true
+  roles:
+    - role: nginx
+    - role: php
+    - role: wordpress
