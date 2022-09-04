@@ -1,2 +1,5 @@
 ---
 # vars file for wordpress
+mysql_db: wp
+mysql_user: wpuser
+mysql_password: 12345 

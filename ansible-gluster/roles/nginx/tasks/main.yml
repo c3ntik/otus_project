@@ -10,3 +10,20 @@
     name: nginx
     state: restarted
     enabled: yes
+
+- name: Remove default nginx configuration
+  file:
+    name: '{{ item }}'
+    state: absent
+  loop:
+    - /etc/nginx/sites-available/default
+    - /etc/nginx/sites-enabled/default
+
+- name: Copy wp config file
+  template:
+    src: otus-project-server.conf.j2
+    dest: /etc/nginx/sites-enabled/otus-project-server.conf
+    mode: 644
+    owner: root
+    group: root
+  notify: Restart nginx

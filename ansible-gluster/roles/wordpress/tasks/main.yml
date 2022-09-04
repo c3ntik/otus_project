@@ -21,3 +21,8 @@
     mode: '775'
     owner: www-data
     group: www-data
+
+- name: Set up wp-config
+  template:
+    src: templates/wp-config.php.j2
+    dest: /var/www/html/wordpress/wp-config.php

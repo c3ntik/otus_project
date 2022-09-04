@@ -9,3 +9,11 @@
   apt:
     name: mc
     state: present
+
+- name: "Update etc/hosts"
+  lineinfile:
+    path: /etc/hosts
+    line: '{{ item }}'
+  with_items:
+    - '192.168.56.12 wp'
+    - '192.168.56.11 gw'

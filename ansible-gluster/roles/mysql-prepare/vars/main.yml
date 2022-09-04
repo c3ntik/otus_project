@@ -1,0 +1,7 @@
+---
+# vars file for mysql-prepare
+#MySQL Settings
+mysql_root_password: "12345"
+mysql_db: "wp"
+mysql_user: "wpuser"
+mysql_password: "12345"

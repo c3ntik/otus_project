@@ -27,8 +27,8 @@ config.vm.define "nginx" do |nginx|
     nginx.vm.network "private_network", ip: "192.168.56.12"
     nginx.vm.hostname = "nginx"
     nginx.vm.provider :virtualbox do |vb|
-        vb.customize ["modifyvm", :id, "--memory", "512"]
-        vb.customize ["modifyvm", :id, "--cpus", "2"]
+        vb.customize ["modifyvm", :id, "--memory", "2000"]
+        vb.customize ["modifyvm", :id, "--cpus", "4"]
         end
     nginx.vm.provision "shell", inline: <<-SHELL
         sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config

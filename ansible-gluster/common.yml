@@ -10,4 +10,6 @@
   roles:
     - role: nginx
     - role: php
+    - role: geerlingguy.mysql
+    - role: mysql-prepare
     - role: wordpress
