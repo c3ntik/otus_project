@@ -1,5 +1,5 @@
 ---
-# tasks file for common1
+# tasks file for common
 - name: Update apt packages
   apt:
     update_cache: yes
@@ -17,3 +17,4 @@
   with_items:
     - '192.168.56.12 wp'
     - '192.168.56.11 gw'
+    - '192.168.56.13 zabbix'

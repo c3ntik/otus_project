@@ -1,6 +1,6 @@
 ---
 - name: common
-  hosts: gw nginx
+  hosts: gw nginx zabbix
   become: true
   roles:
     - role: common
