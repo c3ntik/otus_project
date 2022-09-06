@@ -14,5 +14,5 @@
 
 ### Схема проекта
 
-![SCHEME](/FILES/SCHEME.png)
+![SCHEME](/SCHEME.png)
 
