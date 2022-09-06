@@ -18,7 +18,7 @@
 
 ### Итог playbook
 
-![var](/var.png)
+![proc](/proc.png)
 
 ### Запуск Zabbix
 
