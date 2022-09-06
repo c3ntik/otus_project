@@ -16,3 +16,16 @@
 
 ![SCHEME](/SCHEME.png)
 
+### Итог playbook
+
+![var](/var.png)
+
+### Запуск Zabbix
+
+![zabbix](/zabbix.png)
+
+### Запуск WordPress
+
+![wp](/wp.png)
+
+
