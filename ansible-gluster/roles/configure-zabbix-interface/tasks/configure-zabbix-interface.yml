@@ -1,0 +1,82 @@
+---
+#- name: WAIT 30 SEC TASK
+#  wait_for:
+#    timeout: 30
+
+- name: ADD GATE-HOST TASK
+  local_action:
+    module: community.zabbix.zabbix_host
+    server_url: http://{{ ansible_host }}:8080
+    login_user: "{{ zabbix_web_user }}"
+    login_password: "{{ zabbix_web_password }}"
+    host_name: gate
+    host_groups:
+      - "LINUX_HOSTS"
+    link_templates:
+      - "Linux by Zabbix agent"
+      - "ICMP Ping"
+      - "SSH Service"
+      - "Docker by Zabbix agent 2"
+      - "HTTPS Service"
+    status: enabled
+    state: present
+    interfaces:
+      - type: 1
+        main: 1
+        useip: 1
+        ip: "192.168.56.13"
+        dns: "zabbix"
+        port: "10050"
+  become: false 
+
+- name: ADD MON-HOST TASK
+  local_action:
+    module: community.zabbix.zabbix_host
+    server_url: http://{{ ansible_host }}:8080
+    login_user: "{{ zabbix_web_user }}"
+    login_password: "{{ zabbix_web_password }}"
+    host_name: mon
+    host_groups:
+      - "LINUX_HOSTS"
+    link_templates:
+      - "Linux by Zabbix agent"
+      - "Zabbix server health"
+      - "Nginx by Zabbix agent"
+      - "ICMP Ping"
+      - "PostgreSQL by Zabbix agent 2"
+      - "SSH Service"
+    status: enabled
+    state: present
+    interfaces:
+      - type: 1
+        main: 1
+        useip: 1
+        ip: "192.168.56.13"
+        dns: "gw"
+        port: "10050"
+  become: false
+
+- name: ADD LOG-HOST TASK
+  local_action:
+    module: community.zabbix.zabbix_host
+    server_url: http://{{ ansible_host }}:8080
+    login_user: "{{ zabbix_web_user }}"
+    login_password: "{{ zabbix_web_password }}"
+    host_name: log
+    host_groups:
+      - "LINUX_HOSTS"
+    link_templates:
+      - "Linux by Zabbix agent"
+      - "ICMP Ping"
+      - "SSH Service"
+    status: enabled
+    state: present
+    interfaces:
+      - type: 1
+        main: 1
+        useip: 1
+        ip: "192.168.56.13"
+        dns: "nginx"
+        port: "10050"
+  become: false
+

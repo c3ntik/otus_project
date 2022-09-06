@@ -1,0 +1,4 @@
+---
+# vars file for configure-zabbix-server
+zabbix_web_user: Admin
+zabbix_web_password: zabbix

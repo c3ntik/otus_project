@@ -7,8 +7,11 @@
 
 - name: Install mc
   apt:
-    name: mc
+    name: 
+    - mc
+    - python3-psycopg2
     state: present
+    update_cache: yes
 
 - name: "Update etc/hosts"
   lineinfile:

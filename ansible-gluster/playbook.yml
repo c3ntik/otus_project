@@ -1,0 +1,50 @@
+---
+- name: common
+  hosts: gw nginx zabbix
+  become: true
+  roles:
+    - role: common
+
+- name: nginx
+  hosts: nginx
+  become: true
+  roles:
+    - role: nginx
+    - role: php
+    - role: geerlingguy.mysql
+    - role: mysql-prepare
+    - role: wordpress
+    - role: configure-rsyslog-client
+
+- name: CONFIGURE ZABBIX SERVER
+  hosts: zabbix
+  become: true
+  gather_facts: false
+  roles:
+    - configure-postgresql-all
+    - configure-zabbix-server
+    - configure-rsyslog-server
+    - configure-psql-client-backup-host
+
+- name: CONFIGURE ZABBIX AGENT
+  hosts:
+    - nginx
+    - gw
+    - zabix
+  become: true
+  roles:
+    - configure-zabbix-agent
+
+- name: CONFIGURE ZABBIX INTEFRACE SERVER
+  hosts: zabbix
+  become: true
+  roles:
+    - configure-zabbix-interface
+
+- name: BACKUP CONFIGURE
+  hosts: gw nginx zabbix
+  become: true
+  roles:
+    - configure-basebackup-backup-host
+
+
